@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/newfile.css" />
+    <script defer src="js/newfile.js"></script>
+    <title>Add New File</title>
+  </head>
+  <body>
+    <header>
+      <div class="flex">
+        <a href="/"><span>Notes</span></a>
+        <span>|</span>
+        <a href="/files"><span>Files</span></a>
+      </div>
+      <ul class="menu-list">
+        <li>+</li>
+        <li><a href="/newnote">Notes</a></li>
+        <span>|</span>
+        <li><a href="/newfile">Files</a></li>
+      </ul>
+    </header>
+    <form id="formmain" class="container" enctype="multipart/form-data">
+      <div id="forms">
+        <div class="title-container">
+          <p>Title</p>
+          <input type="text" class="title-input" name="title" />
+        </div>
+        <div class="file-upload-wrap">
+          <input type="file" name="fileUpload" id="fileUpload" />
+          <p id="fileName" class="file-name">No file chosen</p>
+        </div>
+      </div>
+      <button class="submit-btn btn" type="submit">Submit</button>
+    </form>
+  </body>
+</html>

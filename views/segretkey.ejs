@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Authenticate securely to access your notes by entering the master key and completing the hCaptcha challenge."
+    />
+    <meta
+      name="keywords"
+      content="notes, authentication, secret key, secure login, master key, hCaptcha"
+    />
+    <meta name="robots" content="index, follow" />
+    <meta property="og:title" content="Secure Notes Authentication" />
+    <meta
+      property="og:description"
+      content="Authenticate to your notes securely by entering a master key and completing the hCaptcha challenge."
+    />
+    <meta property="og:url" content="https://personal.dilpreet.life/auth" />
+    <meta property="og:type" content="website" />
+    <link rel="canonical" href="https://personal.dilpreet.life/" />
+    <link rel="stylesheet" href="css/segretkey.css" />
+    <script src="https://hcaptcha.com/1/api.js" async defer></script>
+
+    <title>Secure Notes Authentication | Master Key & hCaptcha</title>
+  </head>
+  <body>
+    <main>
+      <section>
+        <h1>Authenticate Your Access to Notes</h1>
+        <p>
+          Enter your master key and complete the hCaptcha challenge to securely
+          access your notes.
+        </p>
+
+        <form action="/auth" method="POST">
+          <label for="masterkey">Master Key</label>
+          <input
+            type="password"
+            id="masterkey"
+            name="masterkey"
+            placeholder="Enter Master Key"
+            required
+          />
+
+          <div
+            class="h-captcha"
+            data-sitekey="ff9ab14a-c01a-4e9a-8cfa-14fcb74c1932"
+            data-callback="onCaptchaSuccess"
+          ></div>
+
+          <button
+            type="submit"
+            id="loginButton"
+            class="btn"
+            style="display: none"
+          >
+            Login
+          </button>
+        </form>
+      </section>
+    </main>
+
+    <script>
+      function onCaptchaSuccess() {
+        document.getElementById("loginButton").style.display = "block";
+      }
+      document.getElementById("masterkey").focus();
+    </script>
+  </body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/newnote.css" />
+    <script defer src="js/newnote.js"></script>
+    <title>Add New Note</title>
+  </head>
+  <body>
+    <header>
+      <div class="flex">
+        <a href="/"><span>Notes</span></a>
+        <span>|</span>
+        <a href="/files"><span>Files</span></a>
+      </div>
+      <ul class="menu-list">
+        <li>+</li>
+        <li><a href="/newnote">Notes</a></li>
+        <span>|</span>
+        <li><a href="/newfile">Files</a></li>
+      </ul>
+    </header>
+    <form id="formmain" class="container">
+      <div id="forms">
+        <div class="title-container">
+          <p>Title</p>
+          <input type="text" class="title-input" name="maintitle" />
+        </div>
+        <div class="textarea-wrap">
+          <textarea name="code" id="textvalue"></textarea>
+        </div>
+      </div>
+      <div class="add-btn-group">
+        <button id="addtextbtn" class="btn">Add Text Bar</button>
+        <button id="addcodebtn" class="btn">Add Code Bar</button>
+      </div>
+      <button class="submit-btn btn" type="submit">Submit</button>
+    </form>
+  </body>
+</html>

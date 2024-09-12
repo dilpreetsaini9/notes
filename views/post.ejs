@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/post.css" />
+    <link rel="stylesheet" href="prism/prism.css" />
+    <title><%= docTitle %></title>
+    <script defer src="js/post.js"></script>
+    <script defer src="prism/prism.js"></script>
+  </head>
+
+  <body>
+    <header>
+      <div class="flex">
+        <a href="/"><span>Notes</span></a>
+        <span>|</span>
+        <a href="/files"><span>Files</span></a>
+      </div>
+      <ul class="menu-list">
+        <li>+</li>
+        <li><a href="/newnote">Notes</a></li>
+        <span>|</span>
+        <li><a href="/newfile">Files</a></li>
+      </ul>
+    </header>
+
+    <div class="container">
+      <% posts.forEach((c)=> { %> <% if (c.code) { %>
+      <div>
+        <div class="upper-div">
+          <span class="clip-img">Copy</span>
+        </div>
+        <pre
+          class="clip"
+        ><code class="language-css" style="white-space: pre-wrap;"><%= c.code %></code></pre>
+      </div>
+
+      <% } else { %>
+      <p><%= c.data %></p>
+      <% } %> <% }); %>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/files.css" />
+    <script defer src="js/files.serviceModel.js"></script>
+
+    <title>Files</title>
+  </head>
+  <body>
+    <header>
+      <div class="flex">
+        <a href="/"><span>Notes</span></a>
+        <span>|</span>
+        <a href="/files"><span>Files</span></a>
+      </div>
+      <ul class="menu-list">
+        <li>+</li>
+        <li><a href="/newnote">Notes</a></li>
+        <span>|</span>
+        <li><a href="/newfile">Files</a></li>
+      </ul>
+    </header>
+    <div class="logo-container">
+      <img class="imgmain" src="/images/files.webp" />
+    </div>
+    <div class="container">
+      <table border="1">
+        <thead>
+          <tr>
+            <th style="text-align: center">Title</th>
+            <th class="size responsive">SIZE</th>
+            <th class="actions responsive">TY</th>
+            <th class="actions">DN</th>
+            <th class="actions">RM</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% files.forEach((post, index) => { let fileIcon = "svg/file.svg"; if
+          (["img", "jpeg", "jpg", "png"].includes(post.filetype.toLowerCase()))
+          { fileIcon = "svg/img.svg"; } else if (["video",
+          "mp4"].includes(post.filetype.toLowerCase())) { fileIcon =
+          "svg/video.svg"; } else if (post.filetype.toLowerCase() === "pdf") {
+          fileIcon = "svg/pdf.svg"; } else if (["mp3",
+          "amr"].includes(post.filetype.toLowerCase())) { fileIcon =
+          "svg/audio.svg"; } %>
+          <tr>
+            <td class="fileTitle"><%= post.title %></td>
+            <td class="size-child responsive"><%= post.size %></td>
+            <td class="actions responsive">
+              <img src="<%= fileIcon %>" />
+            </td>
+            <td class="actions">
+              <a href="/download/<%= post.location %>">
+                <img class="downloadImg" src="svg/download.svg" />
+              </a>
+            </td>
+            <td class="actions">
+              <img
+                class="deleteImg"
+                src="svg/delete.svg"
+                data-id="<%= post.id %>"
+                data-title="<%= post.title %>"
+              />
+            </td>
+          </tr>
+          <% }); %>
+        </tbody>
+      </table>
+      <div class="pagination">
+        <% if (currentPage > 1) { %>
+        <a href="?page=<%= currentPage - 1 %>" class="pagination-link"
+          >Previous</a
+        >
+        <% } %> <% for (let i = 1; i <= totalPages; i++) { %>
+        <a
+          href="?page=<%= i %>"
+          class="pagination-link <%= i === currentPage ? 'active' : '' %>"
+          ><%= i %></a
+        >
+        <% } %> <% if (currentPage < totalPages) { %>
+        <a href="?page=<%= currentPage + 1 %>" class="pagination-link">Next</a>
+        <% } %>
+      </div>
+    </div>
+  </body>
+</html>

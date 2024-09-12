@@ -1,0 +1,35 @@
+version: "3.8"
+
+services:
+  redis:
+    image: redis:latest
+    container_name: my_redis
+    ports:
+      - "6379:6379"
+    restart: always
+
+  mysql:
+    image: mysql:latest
+    container_name: my_mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: root_password
+      MYSQL_DATABASE: your_database_name
+      MYSQL_USER: myuser
+      MYSQL_PASSWORD: mypassword
+      TZ: Asia/Kolkata # Set the timezone here
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql-data:/var/lib/mysql
+      - ./mysql_custom_conf:/etc/mysql/conf.d # Mount custom MySQL config
+    restart: always
+
+  adminer:
+    image: adminer
+    container_name: my_adminer
+    ports:
+      - "8080:8080"
+    restart: always
+
+volumes:
+  mysql-data:
