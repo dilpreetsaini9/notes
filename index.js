@@ -13,7 +13,9 @@ app.use(cookieParser());
 app.use(express.json());
 app.set("view engine", "ejs");
 
-app.use(express.static("public"));
+app.use(
+  express.static("public", { maxAge: "1d", lastModified: true, etag: false })
+);
 app.use("/", router);
 
 const port = process.env.PORT;

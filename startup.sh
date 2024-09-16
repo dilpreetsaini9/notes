@@ -8,3 +8,7 @@ export NVM_DIR="$HOME/.nvm"
 cd /home/dilpreet/Desktop/ok
 
 pm2 start index.js
+
+cd /home/dilpreet/Desktop/it
+
+pm2 start server.js
